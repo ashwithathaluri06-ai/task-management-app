@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task Management App</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <div class="top-bar">
+
+                <div>
+                    <h1>Task Management App</h1>
+                    <p>Organize your tasks and stay productive.</p>
+                </div>
+
+                <div class="user-section">
+                    <span>Welcome, {{ current_user.username }}</span>
+
+                    <a href="{{ url_for('logout') }}" class="logout-button">
+                        Logout
+                    </a>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <section class="task-form">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter a new task"
+            >
+
+            <button onclick="addTask()">
+                Add Task
+            </button>
+
+        </section>
+
+
+        <section class="task-section">
+
+            <div class="task-header">
+
+                <h2>My Tasks</h2>
+
+                <div class="filters">
+
+                    <button onclick="showTasks('all')">
+                        All
+                    </button>
+
+                    <button onclick="showTasks('pending')">
+                        Pending
+                    </button>
+
+                    <button onclick="showTasks('completed')">
+                        Completed
+                    </button>
+
+                </div>
+
+            </div>
+
+            <ul id="taskList"></ul>
+
+        </section>
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
